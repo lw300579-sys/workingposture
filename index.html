@@ -3060,13 +3060,13 @@ const loadPreset = (presetName) => {
                         {tab === 'dashboard' && <button 
     onClick={runAnalysis} 
     disabled={status.analyzing}
-    className="btn-primary w-auto shadow-lg shadow-cyan-900/50 text-lg py-4 px-8"
+    className="btn-primary w-full max-w-md mx-auto shadow-lg shadow-cyan-900/50 text-lg py-4 px-8"
 >
     {status.analyzing 
         ? "ANALYZING POSE..." 
         : (uploads.front || uploads.side || uploads.back || symptoms.length > 0)
             ? "FREE ANALYSIS"
-            : "SELECT SYMPTOMS OR UPLOAD PHOTO"
+            : "SELECT SYMPTOMS OR UPLOAD PHOTOS"
     }
 </button>}
                     </div>
@@ -3306,6 +3306,7 @@ const loadPreset = (presetName) => {
     root.render(<App />);
 </script></body>
 </html>
+
 
 
 
