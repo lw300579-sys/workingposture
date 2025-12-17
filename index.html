@@ -78,6 +78,7 @@
     box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4); 
     cursor: pointer; 
     width: calc(100% - 10px); /* Leaves a tiny gap so it never touches the edge */
+	box-sizing: border-box;
     margin: 0 auto;
     border: none;
 }}
@@ -3010,14 +3011,20 @@ const loadPreset = (presetName) => {
                 {showGoalSetter && <GoalSetter currentGoal={currentGoal} onSave={saveGoal} onClose={() => setShowGoalSetter(false)} />}
                 {showShare && <ShareReport audit={audit} onClose={() => setShowShare(false)} />}
                 <div className="viewport">
-					{audit && (
-    <div className="md:hidden bg-slate-900 border border-cyan-500/30 p-6 rounded-2xl mb-6 animate-popIn no-print">
-        <div className="text-[10px] font-bold text-cyan-500 uppercase tracking-widest text-center mb-1">Analysis Complete</div>
-        <div className="text-5xl font-black text-center mb-4 text-white">{audit.score}%</div>
-        <button 
-            onClick={generateProgram} 
-            className="btn-primary"
-        >
+					{/* MOBILE TOP BAR: Zero-Scroll Protocol Button */}
+{audit && (
+    <div className="lg:hidden bg-slate-900 border-2 border-cyan-500/50 p-5 rounded-2xl mb-8 animate-popIn shadow-2xl">
+        <div className="flex justify-between items-center mb-4">
+            <div>
+                <div className="text-[10px] font-bold text-cyan-500 uppercase tracking-widest">Integrity Score</div>
+                <div className="text-4xl font-black text-white">{audit.score}%</div>
+            </div>
+            <div className="text-right">
+                <div className="text-[10px] font-bold text-slate-500 uppercase">Analysis</div>
+                <div className="text-sm font-bold text-emerald-400">Complete</div>
+            </div>
+        </div>
+        <button onClick={generateProgram} className="btn-primary">
             <Icons.List /> START MY PROTOCOL
         </button>
     </div>
@@ -3296,6 +3303,7 @@ const loadPreset = (presetName) => {
     root.render(<App />);
 </script></body>
 </html>
+
 
 
 
