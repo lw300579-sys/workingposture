@@ -18,7 +18,18 @@
 <style>
     body { background-color: #020617; color: #e2e8f0; font-family: 'Inter', system-ui, sans-serif; overflow: auto; font-size: 16px; }
 
-    .viewport { position: relative; display: flex; flex-direction: column; background: #0f172a; overflow-y: auto; overflow-x: hidden; padding: 1rem; min-height: 100vh; width: 100%; box-sizing: border-box; }
+    .viewport { 
+    position: relative; 
+    display: flex; 
+    flex-direction: column; 
+    background: #0f172a; 
+    overflow-y: auto; 
+    overflow-x: hidden; 
+    padding: 12px; /* Smaller padding gives the button more room */
+    min-height: 100vh; 
+    width: 100vw; 
+    box-sizing: border-box; 
+}
 .glass-panel { 
     background: #020617; 
     border-left: 1px solid #1e293b; 
@@ -2999,6 +3010,18 @@ const loadPreset = (presetName) => {
                 {showGoalSetter && <GoalSetter currentGoal={currentGoal} onSave={saveGoal} onClose={() => setShowGoalSetter(false)} />}
                 {showShare && <ShareReport audit={audit} onClose={() => setShowShare(false)} />}
                 <div className="viewport">
+					{audit && (
+    <div className="md:hidden bg-slate-900 border border-cyan-500/30 p-6 rounded-2xl mb-6 animate-popIn no-print">
+        <div className="text-[10px] font-bold text-cyan-500 uppercase tracking-widest text-center mb-1">Analysis Complete</div>
+        <div className="text-5xl font-black text-center mb-4 text-white">{audit.score}%</div>
+        <button 
+            onClick={generateProgram} 
+            className="btn-primary"
+        >
+            <Icons.List /> START MY PROTOCOL
+        </button>
+    </div>
+)}
 <div className="text-center mb-8 px-6">
     <h1 className="text-4xl md:text-5xl font-black text-white mb-4 tracking-tight">
         Fix Your Posture in 60 Seconds
@@ -3273,6 +3296,7 @@ const loadPreset = (presetName) => {
     root.render(<App />);
 </script></body>
 </html>
+
 
 
 
